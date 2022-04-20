@@ -1,6 +1,6 @@
 {
   "name": "@stdlib/stats-chi2test",
-  "version": "0.0.0",
+  "version": "0.0.8",
   "description": "Perform a chi-square independence test.",
   "license": "Apache-2.0",
   "author": {
