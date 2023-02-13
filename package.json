@@ -54,7 +54,7 @@
     "@stdlib/ndarray-array": "^0.0.9",
     "@stdlib/stats-base-dists-chisquare-cdf": "^0.0.7",
     "@stdlib/stats-incr-min": "^0.0.7",
-    "@stdlib/string-format": "^0.0.3",
+    "@stdlib/error-tools-fmtprodmsg": "^0.0.2",
     "@stdlib/types": "^0.0.14",
     "@stdlib/utils-define-read-only-property": "^0.0.8"
   },
