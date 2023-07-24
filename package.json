@@ -62,7 +62,7 @@
     "@stdlib/ndarray-ctor": "^0.0.10",
     "@stdlib/stats-base-dists-chisquare-cdf": "^0.0.7",
     "@stdlib/stats-base-dmin": "^0.0.9",
-    "@stdlib/string-format": "^0.0.3",
+    "@stdlib/error-tools-fmtprodmsg": "^0.0.2",
     "@stdlib/types": "^0.0.14",
     "@stdlib/utils-define-nonenumerable-read-only-accessor": "^0.0.7",
     "@stdlib/utils-define-nonenumerable-read-only-property": "^0.0.7"
