@@ -24,28 +24,46 @@ limitations under the License.
 
 > Perform a chi-square independence test.
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/stats-chi2test
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm` branch][esm-url].
+-   If you are using Deno, visit the [`deno` branch][deno-url].
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd` branch][umd-url].
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
 ```javascript
-import chi2test from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-chi2test@esm/index.mjs';
+var chi2test = require( '@stdlib/stats-chi2test' );
 ```
 
-#### chi2test( x\[, opts] )
+#### chi2test( x\[, options] )
 
-Computes a chi-square independence test for the **null hypothesis** that the joint distribution of the cell counts in two-dimensional `ndarray` or `array` of `arrays` `x` is the product of the row and column marginals, i.e. that the row and column variables are independent.
+Computes a chi-square independence test for the **null hypothesis** that the joint distribution of the observed frequencies is the product of the row and column marginals (i.e., that the row and column variables are independent).
 
 ```javascript
-// 2x2 table
+// 2x2 contigency table:
 var x = [
     [ 20, 30 ],
     [ 30, 20 ]
 ];
 
-var out = chi2test( x );
+var res = chi2test( x );
+
+var o = res.toJSON();
 /* returns
     {
         'rejected': false,
@@ -73,7 +91,9 @@ var x = [
 var opts = {
     'alpha': 0.1
 };
-var out = chi2test( x, opts );
+var res = chi2test( x, opts );
+
+var o = res.toJSON();
 /* returns
     {
         'rejected': true,
@@ -86,7 +106,7 @@ var out = chi2test( x, opts );
 */
 ```
 
-For 2x2 contingency tables, the function by default applies Yates' continuity correction. To disable the continuity correction, set `correct` to `false`.
+By default, the function applies Yates' continuity correction for 2x2 contingency tables. To disable the continuity correction, set `correct` to `false`.
 
 ```javascript
 var x = [
@@ -96,7 +116,9 @@ var x = [
 var opts = {
     'correct': false
 };
-var out = chi2test( x, opts );
+var res = chi2test( x, opts );
+
+var o = res.toJSON();
 /* returns
     {
         'rejected': true,
@@ -109,53 +131,43 @@ var out = chi2test( x, opts );
 */
 ```
 
-The function returns an `object` having the following properties:
+The function returns a results `object` having the following properties:
 
 -   **alpha**: significance level.
 -   **rejected**: `boolean` indicating the test decision.
 -   **pValue**: test p-value.
 -   **statistic**: test statistic.
 -   **df**: degrees of freedom.
--   **expected**: expected cell counts.
+-   **expected**: expected observation frequencies.
 -   **method**: test name.
--   **print**: method for printing formatted test output.
+-   **toString**: serializes results as formatted test output.
+-   **toJSON**: serializes results as a JSON object.
 
-To print formatted test output, invoke the `print` method. `print` accepts a `digits` option that controls the number of decimal digits displayed for the outputs and a `decision` option, which when set to `false` will hide the test decision.
+To print formatted test output, invoke the `toString` method. The method accepts the following options:
 
-<!-- run-disable -->
+-   **digits**: number of displayed decimal digits. Default: `4`.
+-   **decision**: `boolean` indicating whether to show the test decision. Default: `true`.
 
 ```javascript
 var x = [
     [ 20, 30 ],
     [ 30, 20 ]
 ];
-var out = chi2test( x );
-console.log( out.print() );
-/* =>
-*    Chi-square independence test
-*
-*    Null hypothesis: the two variables are independent
-*
-*        pValue: 0.0719
-*        statistic: 3.24
-*        degrees of freedom: 1
-*
-*    Test Decision: Fail to reject null in favor of alternative at 5% significance level
-*/
+var res = chi2test( x );
 
-console.log( out.print({
-    'digits': 6
-}) );
-/* =>
-* Chi-square independence test
-*
-* Null hypothesis: the two variables are independent
-*
-*     pValue: 0.071861
-*     statistic: 3.24
-*     degrees of freedom: 1
-*
-* Test Decision: Fail to reject null in favor of alternative at 5% significance level
+var table = res.toString({
+    'decision': false
+});
+/* e.g., returns
+
+    Chi-square independence test
+
+    Null hypothesis: the two variables are independent
+
+       pValue: 0.0719
+       statistic: 3.24
+       degrees of freedom: 1
+
 */
 ```
 
@@ -167,7 +179,7 @@ console.log( out.print({
 
 ## Notes
 
--   The chi-square approximation may be incorrect if the observed or expected frequencies in each category are too small. Common practice is to require frequencies greater than five. The Yates' continuity correction is enabled by default for 2x2 tables to account for this, although it tends to over-correct.
+-   The chi-square approximation may be incorrect if the observed or expected frequencies in each category are too small. Common practice is to require frequencies **greater than** five. The Yates' continuity correction is enabled by default for 2x2 tables to account for this, although it tends to over-correct.
 
 </section>
 
@@ -177,16 +189,13 @@ console.log( out.print({
 
 ## Examples
 
+<!-- eslint-disable no-multi-spaces -->
+
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="module">
-
-import array from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-array@esm/index.mjs';
-import chi2test from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-chi2test@esm/index.mjs';
+```javascript
+var array = require( '@stdlib/ndarray-array' );
+var chi2test = require( '@stdlib/stats-chi2test' );
 
 /*
 * Data from students in grades 4-6 on whether good grades, athletic ability, or popularity are most important to them:
@@ -194,21 +203,17 @@ import chi2test from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-chi2test@esm/i
 * Source: Chase, M.A and Dummer, G.M. (1992), "The Role of Sports as a Social Determinant for Children"
 */
 var table = array([
-    /* Grades Popular Sports */
-    [ 63, 31, 25 ], // 4th
-    [ 88, 55, 33 ], // 5th
-    [ 96, 55, 32 ] // 6th
+    /* Grades Popularity Sports */
+    [    63,      31,      25   ], // 4th
+    [    88,      55,      33   ], // 5th
+    [    96,      55,      32   ]  // 6th
 ]);
 
 // Assess whether the grade level and the students' goals are independent of each other:
 var out = chi2test( table );
 // returns {...}
 
-console.log( out.print() );
-
-</script>
-</body>
-</html>
+console.log( out.toString() );
 ```
 
 </section>
@@ -232,7 +237,7 @@ console.log( out.print() );
 
 ## Notice
 
-This package is part of [stdlib][stdlib], a standard library with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
+This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
 
 For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
 
@@ -276,7 +281,7 @@ Copyright &copy; 2016-2023. The Stdlib [Authors][stdlib-authors].
 -->
 
 [chat-image]: https://img.shields.io/gitter/room/stdlib-js/stdlib.svg
-[chat-url]: https://gitter.im/stdlib-js/stdlib/
+[chat-url]: https://app.gitter.im/#/room/#stdlib-js_stdlib:gitter.im
 
 [stdlib]: https://github.com/stdlib-js/stdlib
 
