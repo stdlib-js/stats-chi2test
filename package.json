@@ -1,6 +1,6 @@
 {
   "name": "@stdlib/stats-chi2test",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Perform a chi-square independence test.",
   "license": "Apache-2.0",
   "author": {
@@ -37,7 +37,7 @@
     "url": "https://github.com/stdlib-js/stdlib/issues"
   },
   "dependencies": {
-    "@stdlib/array-base-flatten2d-by": "github:stdlib-js/array-base-flatten2d-by#main",
+    "@stdlib/array-base-flatten2d-by": "^0.0.1",
     "@stdlib/array-float64": "^0.0.6",
     "@stdlib/array-shape": "^0.0.6",
     "@stdlib/assert-has-own-property": "^0.0.7",
