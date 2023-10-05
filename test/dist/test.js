@@ -30,11 +30,11 @@ var chi2test = require( './../../dist' );
 
 // FIXTURES //
 
-var counts = require( './../..xtures/r/counts.json' );
-var corrected = require( './../..xtures/r/corrected.json' );
-var uncorrected = require( './../..xtures/r/uncorrected.json' );
-var moreCols = require( './../..xtures/r/more_cols.json' );
-var moreRows = require( './../..xtures/r/more_rows.json' );
+var counts = require( './../fixtures/r/counts.json' );
+var corrected = require( './../fixtures/r/corrected.json' );
+var uncorrected = require( './../fixtures/r/uncorrected.json' );
+var moreCols = require( './../fixtures/r/more_cols.json' );
+var moreRows = require( './../fixtures/r/more_rows.json' );
 
 
 // TESTS //
