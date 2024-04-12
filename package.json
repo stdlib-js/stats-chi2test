@@ -53,7 +53,7 @@
     "@stdlib/blas-ext-base-dapx": "^0.2.1",
     "@stdlib/blas-ext-base-dsumpw": "^0.2.1",
     "@stdlib/math-base-special-abs": "^0.2.1",
-    "@stdlib/math-base-special-min": "^0.2.1",
+    "@stdlib/math-base-special-min": "^0.2.2",
     "@stdlib/math-base-special-roundn": "^0.2.1",
     "@stdlib/ndarray-base-ind2sub": "^0.2.1",
     "@stdlib/ndarray-base-numel": "^0.2.1",
