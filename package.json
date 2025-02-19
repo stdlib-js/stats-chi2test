@@ -61,7 +61,7 @@
     "@stdlib/ndarray-base-vind2bind": "^0.2.2",
     "@stdlib/ndarray-ctor": "^0.2.2",
     "@stdlib/stats-base-dists-chisquare-cdf": "^0.2.2",
-    "@stdlib/stats-base-dmin": "^0.2.2",
+    "@stdlib/stats-strided-dmin": "github:stdlib-js/stats-strided-dmin#main",
     "@stdlib/string-format": "^0.2.2",
     "@stdlib/types": "^0.4.3",
     "@stdlib/utils-define-nonenumerable-read-only-accessor": "^0.2.3",
