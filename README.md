@@ -42,7 +42,7 @@ limitations under the License.
 ## Usage
 
 ```javascript
-import chi2test from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-chi2test@deno/mod.js';
+import chi2test from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-chi2test@v0.2.2-deno/mod.js';
 ```
 
 #### chi2test( x\[, options] )
@@ -190,7 +190,7 @@ var table = res.toString({
 
 ```javascript
 import array from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-array@deno/mod.js';
-import chi2test from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-chi2test@deno/mod.js';
+import chi2test from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-chi2test@v0.2.2-deno/mod.js';
 
 /*
 * Data from students in grades 4-6 on whether good grades, athletic ability, or popularity are most important to them:
