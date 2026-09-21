@@ -70,9 +70,9 @@
   },
   "devDependencies": {
     "@stdlib/assert-contains": "^0.3.1",
+    "@stdlib/assert-is-almost-same-value": "^0.1.1",
     "@stdlib/assert-is-object": "^0.2.3",
     "@stdlib/assert-is-string": "^0.2.3",
-    "@stdlib/constants-float64-eps": "^0.2.3",
     "@stdlib/math-base-special-max": "^0.3.1",
     "@stdlib/ndarray-array": "^0.2.3",
     "@stdlib/random-base-discrete-uniform": "^0.2.2",
